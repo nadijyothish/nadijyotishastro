@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://nadijyotishastro.com/</loc>
-    <lastmod>2025-10-20</lastmod>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://nadijyotishastro.com/contact</loc>
-    <lastmod>2025-10-20</lastmod>
+    <loc>https://nadijyotishastro.com/contact/</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://nadijyotishastro.com/nadi-reading</loc>
-    <lastmod>2025-10-20</lastmod>
+    <loc>https://nadijyotishastro.com/nadi-reading/</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://nadijyotishastro.com/spiritual-remedies</loc>
-    <lastmod>2025-10-20</lastmod>
+    <loc>https://nadijyotishastro.com/spiritual-remedies/</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://nadijyotishastro.com/poojas-homams</loc>
-    <lastmod>2025-10-20</lastmod>
+    <loc>https://nadijyotishastro.com/poojas-homams/</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://nadijyotishastro.com/marriage-matching</loc>
-    <lastmod>2025-10-20</lastmod>
+    <loc>https://nadijyotishastro.com/marriage-matching/</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://nadijyotishastro.com/about</loc>
-    <lastmod>2025-10-20</lastmod>
-    <priority>0.8</priority>
+    <loc>https://nadijyotishastro.com/about/</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
 </urlset>
