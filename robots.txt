@@ -1,4 +1,9 @@
 User-agent: *
 Disallow: /admin/
+Disallow: /scripts/
+Disallow: /private/
 Allow: /
+
+
 Sitemap: https://nadijyotishastro.com/sitemap.xml
+
