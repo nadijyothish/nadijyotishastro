@@ -1360,3 +1360,52 @@ h5 {
 .shivaimg{
   padding-top:100px ;
 }
+
+.faq {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.faq h3 {
+  font-size: 20px;
+  color: #0056b3;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.faq p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .faq {
+    padding: 20px;
+  }
+
+  .faq h2 {
+    font-size: 24px;
+  }
+
+  .faq h3 {
+    font-size: 18px;
+  }
+
+  .faq p {
+    font-size: 15px;
+  }
+}
