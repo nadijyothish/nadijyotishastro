@@ -128,22 +128,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-              // ========== Slide-in Animation for 4th Part ==========
-const slideCards = document.querySelectorAll('.slide-card');
+// Slide-in Observer for Thumb Cards Section
+const cards = document.querySelectorAll('.slide-in-left, .slide-in-right');
 
-if (slideCards.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          obs.unobserve(entry.target); // Animate only once
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      cardObserver.unobserve(entry.target); // animate only once
+    }
+  });
+}, { threshold: 0.3 });
 
-  slideCards.forEach(card => observer.observe(card));
-}
+cards.forEach(card => cardObserver.observe(card));
+
 
