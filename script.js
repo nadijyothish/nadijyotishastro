@@ -142,4 +142,18 @@ const cardObserver = new IntersectionObserver((entries) => {
 
 cards.forEach(card => cardObserver.observe(card));
 
+// Trigger slide-in when the 5th part becomes visible
+const slideCards = document.querySelectorAll('.slide-in-left, .slide-in-right');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target); // one-time animation
+    }
+  });
+}, { threshold: 0.3 });
+
+slideCards.forEach(card => observer.observe(card));
+
 
