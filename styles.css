@@ -1410,27 +1410,25 @@ h5 {
   }
 }
 
-/* Initial off-screen state */
-.slide-in-left,
-.slide-in-right {
+/* Hidden initially */
+.slide-in-left, .slide-in-right {
   opacity: 0;
   visibility: hidden;
-  transition: all 0.9s ease-out;
+  transition: all 0.8s ease-out;
 }
 
-/* Left card moves from far left */
+/* From left side */
 .slide-in-left {
-  transform: translateX(-120px);
+  transform: translateX(-150px);
 }
 
-/* Right card moves from far right */
+/* From right side */
 .slide-in-right {
-  transform: translateX(120px);
+  transform: translateX(150px);
 }
 
 /* When visible */
-.slide-in-left.show,
-.slide-in-right.show {
+.slide-in-left.show, .slide-in-right.show {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
