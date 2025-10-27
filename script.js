@@ -125,3 +125,25 @@ document.addEventListener('DOMContentLoaded', function () {
     onScroll();
   }
 });
+
+
+
+              // ========== Slide-in Animation for 4th Part ==========
+const slideCards = document.querySelectorAll('.slide-card');
+
+if (slideCards.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target); // Animate only once
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  slideCards.forEach(card => observer.observe(card));
+}
+
