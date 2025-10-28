@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // ---- Mobile menu / dropdown code (keep your existing code) ----
+  // ---- Mobile menu ----
   const menuToggle = document.getElementById('mobile-menu');
   const navMenu = document.querySelector('.nav-menu');
   const menuIcon = document.querySelector('.menu-toggle i');
@@ -28,9 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ---- Dropdown menu handlers (keep existing) ----
-  const dropdownItems = document.querySelectorAll('.nav-menu li');
-  dropdownItems.forEach(item => {
+  // ---- Dropdown Toggle ----
+  document.querySelectorAll('.nav-menu li').forEach(item => {
     item.addEventListener('click', function (e) {
       const dropdown = this.querySelector('.dropdown-menu');
       if (dropdown) {
@@ -40,109 +39,65 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ==========================
-  // Robust Counter Animation
-  // ==========================
+  // ---- Counter Animation ----
   const counters = document.querySelectorAll('.counter');
-
-  if (counters.length === 0) {
-    // nothing to do
-    return;
-  }
-
-  // Helper: format number with commas (Indian grouping if needed)
-  // Use 'en-IN' for Indian grouping (12,34,567), 'en-US' for standard (1,234,567)
   const formatter = new Intl.NumberFormat('en-IN');
+  const playedCounters = new WeakSet();
 
-  // Easing function (easeOutQuad)
-  const easeOutQuad = (t) => t * (2 - t);
+  const animateCounter = (el) => {
+    const target = parseInt(el.getAttribute('data-target') || '0', 10);
+    if (isNaN(target) || playedCounters.has(el)) return;
 
-  const animate = (el, start, end, duration) => {
-    let startTime = null;
-    const step = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      let progress = Math.min(elapsed / duration, 1);
-      progress = easeOutQuad(progress);
-      const current = Math.floor(start + (end - start) * progress);
-      el.textContent = formatter.format(current);
-      if (elapsed < duration) {
+    let start = 0;
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = progress * (2 - progress);
+      el.textContent = formatter.format(Math.floor(start + eased * (target - start)));
+
+      if (progress < 1) {
         requestAnimationFrame(step);
       } else {
-        el.textContent = formatter.format(end); // ensure exact end
-        el.classList.add('animated'); // optional: add class for CSS effect
+        el.textContent = formatter.format(target);
+        playedCounters.add(el);
       }
-    };
+    }
     requestAnimationFrame(step);
   };
 
-  // Play once per element
-  const played = new WeakSet();
+  // ---- Slide-in Animation ----
+  const slideCards = document.querySelectorAll('.slide-in-left, .slide-in-right');
+  const revealedCards = new WeakSet();
 
-  // If IntersectionObserver is available use it; fallback to scroll listener
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // When the container (.seventhpart) or individual counters appear
-          counters.forEach(counter => {
-            if (played.has(counter)) return;
-            const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-            if (isNaN(target)) return;
-            counter.textContent = '0';
-            animate(counter, 0, target, 1500); // 1500ms duration
-            played.add(counter);
-          });
-          obs.disconnect(); // we only need to play once
-        }
-      });
-    }, { threshold: 0.35 });
-
-    // Observe the parent section if present, otherwise observe the first counter
-    const section = document.querySelector('.seventhpart');
-    if (section) observer.observe(section);
-    else observer.observe(counters[0]);
-
-  } else {
-    // Fallback: scroll listener (less efficient)
-    let triggered = false;
-    const onScroll = () => {
-      const section = document.querySelector('.seventhpart');
-      const rect = section ? section.getBoundingClientRect() : counters[0].getBoundingClientRect();
-      if (!triggered && rect.top < window.innerHeight - 100) {
-        counters.forEach(counter => {
-          const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-          if (isNaN(target)) return;
-          counter.textContent = '0';
-          animate(counter, 0, target, 1500);
-        });
-        triggered = true;
-        window.removeEventListener('scroll', onScroll);
-      }
-    };
-    window.addEventListener('scroll', onScroll);
-    // also try once in case already visible
-    onScroll();
-  }
-});
-
-
-
-
-
-// Trigger slide-in when the 5th part becomes visible
-const slideCards = document.querySelectorAll('.slide-in-left, .slide-in-right');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-      observer.unobserve(entry.target); // one-time animation
+  const reveal = (el) => {
+    if (!revealedCards.has(el)) {
+      el.classList.add('show');
+      revealedCards.add(el);
     }
-  });
-}, { threshold: 0.3 });
+  };
 
-slideCards.forEach(card => observer.observe(card));
+  // ---- Single Observer handling ALL animations ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
 
+      if (entry.target.classList.contains('counter')) {
+        animateCounter(entry.target);
+      }
 
+      if (entry.target.classList.contains('slide-in-left') ||
+          entry.target.classList.contains('slide-in-right')) {
+        reveal(entry.target);
+      }
 
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+
+  // Attach observer to items
+  counters.forEach(c => observer.observe(c));
+  slideCards.forEach(c => observer.observe(c));
+
+});
