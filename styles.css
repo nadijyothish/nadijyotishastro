@@ -1526,3 +1526,21 @@ h5 {
 }
 
 
+/* Default mobile-first (bigger on mobile is okay) */
+.thumb-card {
+  padding: 8px 14px;
+  font-size: 15px;
+  border-radius: 6px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ✅ PC view — reduce size */
+@media (min-width: 992px) {
+  .thumb-card {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+}
+
