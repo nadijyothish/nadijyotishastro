@@ -1412,19 +1412,18 @@ h5 {
 
 /* Default Desktop Styling */
 .thumb-card {
-  display: block;
-  padding: 14px 18px;
-  font-size: 18px;
+  display: inline-block;
+  width: 360px; /* increase or decrease as needed */
+  padding: 16px 20px;
+  font-size: 20px;
   font-weight: 700;
   text-align: center;
+  text-transform: none;
   border-radius: 10px;
-  color: #fff;
-  margin: 10px auto;
-  width: 90%;
-  max-width: 420px;
-  line-height: 1.3;
-  white-space: normal; /* Allow text to wrap */
-  word-break: break-word; /* Prevent text from disappearing */
+  color: #ffffff;
+  margin: 20px auto;
+  white-space: nowrap; /* single line text */
+  overflow: hidden;
 }
 
 
@@ -1467,6 +1466,7 @@ h5 {
     padding: 10px 14px;
   }
 }
+
 
 
 
