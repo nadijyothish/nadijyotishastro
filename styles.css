@@ -1411,60 +1411,93 @@ h5 {
 }
 
 
-  .fifthpart {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-    flex-wrap: wrap;
-  }
+ /* Thumb-card: big, single-line, colored backgrounds, slide-in animation */
+.fifthpart {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: nowrap; /* keep cards on one row on large screens */
+}
 
-  .fifthpart p {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 0;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    flex: 1;
-    min-width: 200px;
-  }
+/* Card base */
+.thumb-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 520px;           /* wide so text stays single line on desktop */
+  max-width: 90%;
+  padding: 22px 36px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 30px;            /* increase size */
+  font-weight: 800;           /* bold */
+  text-align: center;
+  white-space: nowrap;        /* single line on larger screens */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  cursor: pointer;
+  user-select: none;
+  transform: translateX(0);
+  opacity: 1;
+  transition: box-shadow 200ms ease, transform 300ms ease;
+}
 
- .male {
-    background-color: #007BFF;
-  }
+/* Male / Female backgrounds */
+.thumb-card.male {
+  background: linear-gradient(90deg, #0b69ff 0%, #007BFF 50%, #3db2ff 100%);
+  border: 2px solid rgba(255,255,255,0.18);
+}
 
-  .female {
-    background-color: #E91E63;
-  }
+.thumb-card.female {
+  background: linear-gradient(90deg, #ff2d7a 0%, #E91E63 50%, #ff86b5 100%);
+  border: 2px solid rgba(255,255,255,0.18);
+}
 
+/* Hover / focus */
+.thumb-card:hover,
+.thumb-card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  outline: none;
+}
 
+/* INITIAL OFF-SCREEN POSITIONS for slide animations */
+.slide-in-left {
+  transform: translateX(-120vw);  /* start far left */
+  opacity: 0;
+  visibility: hidden;
+}
 
+.slide-in-right {
+  transform: translateX(120vw);   /* start far right */
+  opacity: 0;
+  visibility: hidden;
+}
 
-  /* Mobile responsive styles */
-  @media screen and (max-width: 768px) {
-    .fifthpart {
-      flex-direction: row;
-      gap: 8px;
-      padding: 0 10px;
-    }
+/* WHEN VISIBLE: animate into place */
+.slide-in-left.show,
+.slide-in-right.show {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 850ms cubic-bezier(.2,.9,.3,1), opacity 550ms ease;
+}
 
-    .fifthpart p {
-      font-size: 14px;
-      padding: 8px 10px;
-      white-space: normal;
-      min-width: 0;
-    }
-  }
+/* Stagger: small delay for second card so they don't land at the same time */
+.slide-in-left.show + .slide-in-right.show,
+.slide-in-left.show ~ .slide-in-right.show {
+  transition-delay: 120ms;
+}
 
-  /* Small mobile devices */
-  @media screen and (max-width: 360px) {
-    .fifthpart p {
-      font-size: 12px;
-      padding: 6px 8px;
-    }
-  }
+/* Responsive: smaller screens (allow wrapping & smaller font) */
+@media (max-width: 880px) {
+  .fifthpart { flex-wrap: wrap; gap: 14px; }
+  .thumb-card { min-width: 320px; font-size: 22px; padding: 18px 24px; white-space: normal; }
+}
 
-
+@media (max-width: 480px) {
+  .thumb-card { width: 100%; min-width: unset; font-size: 18px; padding: 14px 18px; }
+}
