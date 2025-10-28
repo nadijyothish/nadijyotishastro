@@ -101,3 +101,12 @@ document.addEventListener('DOMContentLoaded', function () {
   slideCards.forEach(c => observer.observe(c));
 
 });
+
+
+// ✅ Force visibility check on page load as well
+window.addEventListener('load', () => {
+  counters.forEach(c => observer.observe(c));
+  slideCards.forEach(c => observer.observe(c));
+  window.dispatchEvent(new Event('scroll')); // trigger immediate check
+});
+
