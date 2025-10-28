@@ -1431,12 +1431,13 @@ h5 {
     flex: 1;
     min-width: 200px;
   }
-.thumb-card slide-in-left{
-   background-color: #007BFF;
-}
-.thumb-card slide-in-right{
-  color:pink;
-}
+ .male {
+    background-color: #007BFF;
+  }
+
+  .female {
+    background-color: #E91E63;
+  }
 
 
   /* Mobile responsive styles */
@@ -1487,6 +1488,7 @@ h5 {
   visibility: visible;
   transform: translateX(0);
 }
+
 
 
 
