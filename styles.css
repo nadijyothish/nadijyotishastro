@@ -1431,6 +1431,12 @@ h5 {
     flex: 1;
     min-width: 200px;
   }
+.thumb-card slide-in-left{
+  color:blue;
+}
+.thumb-card slide-in-right{
+  color:pink;
+}
 
 
   /* Mobile responsive styles */
@@ -1481,6 +1487,7 @@ h5 {
   visibility: visible;
   transform: translateX(0);
 }
+
 
 
 
