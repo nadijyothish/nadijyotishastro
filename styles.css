@@ -1501,3 +1501,28 @@ h5 {
 @media (max-width: 480px) {
   .thumb-card { width: 100%; min-width: unset; font-size: 18px; padding: 14px 18px; }
 }
+/* 🔹 Start hidden state */
+.slide-in-left,
+.slide-in-right {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s ease-out;
+}
+
+/* 🔹 Slide direction offsets */
+.slide-in-left {
+  transform: translateX(-100px);
+}
+.slide-in-right {
+  transform: translateX(100px);
+}
+
+/* ✅ When visible */
+.slide-in-left.show,
+.slide-in-right.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+
