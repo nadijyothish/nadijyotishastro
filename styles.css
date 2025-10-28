@@ -1543,6 +1543,18 @@ h5 {
     border-radius: 4px;
   }
 }
+/* Larger Thumb Cards on Desktop */
+@media screen and (min-width: 769px) {
+  .thumb-card {
+    font-size: 1.3rem;   /* Bigger text */
+    font-weight: 700;    /* Bold text */
+    padding: 18px 30px;  /* Bigger clickable area */
+    width: 360px;        /* Increase card width */
+    height: 90px;        /* Increase card height */
+    border-radius: 14px; /* Softer rounded corners */
+  }
+}
+
 
 
 
