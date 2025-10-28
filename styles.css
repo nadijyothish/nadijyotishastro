@@ -1437,7 +1437,7 @@ h5 {
   }
 
   .female {
-    background-color: #E91E63;
+    background-color: ;
   }
 
   /* Mobile responsive styles */
@@ -1488,6 +1488,7 @@ h5 {
   visibility: visible;
   transform: translateX(0);
 }
+
 
 
 
