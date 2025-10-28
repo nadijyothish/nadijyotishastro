@@ -1422,6 +1422,9 @@ h5 {
 
 /* ✅ Default style — Mobile first */
 .thumb-card {
+   display: flex;
+    justify-content: center;
+    align-items: center;
     width: 90%;
     padding: 18px 12px;
     text-align: center;
@@ -1472,4 +1475,5 @@ h5 {
         padding: 26px;
     }
 }
+
 
