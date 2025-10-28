@@ -1539,9 +1539,10 @@ h5 {
 @media (min-width: 992px) {
   .thumb-card {
     padding: 5px 10px;
-    font-size: 15px;
+    font-size: 30px;
     border-radius: 4px;
   }
 }
+
 
 
