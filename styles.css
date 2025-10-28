@@ -1432,13 +1432,6 @@ h5 {
     min-width: 200px;
   }
 
-  .male {
-    background-color: #007BFF;
-  }
-
-  .female {
-    background-color: ;
-  }
 
   /* Mobile responsive styles */
   @media screen and (max-width: 768px) {
@@ -1488,6 +1481,7 @@ h5 {
   visibility: visible;
   transform: translateX(0);
 }
+
 
 
 
