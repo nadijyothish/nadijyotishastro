@@ -67,46 +67,4 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(step);
   };
 
-  // ---- Slide-in Animation ----
-  const slideCards = document.querySelectorAll('.slide-in-left, .slide-in-right');
-  const revealedCards = new WeakSet();
-
-  const reveal = (el) => {
-    if (!revealedCards.has(el)) {
-      el.classList.add('show');
-      revealedCards.add(el);
-    }
-  };
-
-  // ---- Single Observer handling ALL animations ----
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      if (entry.target.classList.contains('counter')) {
-        animateCounter(entry.target);
-      }
-
-      if (entry.target.classList.contains('slide-in-left') ||
-          entry.target.classList.contains('slide-in-right')) {
-        reveal(entry.target);
-      }
-
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.3 });
-
-  // Attach observer to items
-  counters.forEach(c => observer.observe(c));
-  slideCards.forEach(c => observer.observe(c));
-
-});
-
-
-// ✅ Force visibility check on page load as well
-window.addEventListener('load', () => {
-  counters.forEach(c => observer.observe(c));
-  slideCards.forEach(c => observer.observe(c));
-  window.dispatchEvent(new Event('scroll')); // trigger immediate check
-});
-
+  
