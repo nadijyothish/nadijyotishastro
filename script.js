@@ -48,23 +48,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const target = parseInt(el.getAttribute('data-target') || '0', 10);
     if (isNaN(target) || playedCounters.has(el)) return;
 
+    playedCounters.add(el);
     let start = 0;
     const duration = 1500;
     const startTime = performance.now();
 
     function step(now) {
       const progress = Math.min((now - startTime) / duration, 1);
-      const eased = progress * (2 - progress);
-      el.textContent = formatter.format(Math.floor(start + eased * (target - start)));
+      const current = Math.floor(progress * target);
+      el.textContent = formatter.format(current);
 
       if (progress < 1) {
         requestAnimationFrame(step);
       } else {
         el.textContent = formatter.format(target);
-        playedCounters.add(el);
       }
     }
+
     requestAnimationFrame(step);
   };
 
-  
+  // ---- Trigger Counter When Visible ----
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => observer.observe(counter));
+});
