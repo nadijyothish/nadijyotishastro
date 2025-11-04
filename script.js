@@ -80,3 +80,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   counters.forEach(counter => observer.observe(counter));
 });
+
+
+
+
+
+
+
+let index = 0;
+const slides = document.querySelector('.slides');
+const total = slides.children.length;
+
+function moveSlide(step) {
+  index = (index + step + total) % total;
+  updateSlide();
+}
+
+function updateSlide() {
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}
+
+// Automatic slide change every 5 seconds
+function autoSlide() {
+  moveSlide(1);
+  setTimeout(autoSlide, 5000);
+}
+
+autoSlide();
