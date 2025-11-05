@@ -1567,7 +1567,7 @@ h5 {
 }
 
 /* Navigation arrows */
-.prev, .next {
+.blog-prev, .blog-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1583,15 +1583,15 @@ h5 {
   z-index: 10;
 }
 
-.prev:hover, .next:hover {
+.blog-prev:hover, .blog-next:hover {
   background: rgba(90, 50, 15, 0.9);
 }
 
-.prev {
+.blog-prev {
   left: 15px;
 }
 
-.next {
+.blog-next {
   right: 15px;
 }
 
@@ -1609,3 +1609,4 @@ h5 {
     font-size: 15px;
   }
 }
+
