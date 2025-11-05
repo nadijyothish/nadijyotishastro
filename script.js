@@ -119,3 +119,44 @@ document.addEventListener("DOMContentLoaded", () => {
   slidesContainer.addEventListener("mouseleave", startAutoSlide);
 });
 
+
+
+
+
+
+// ===============================
+// Blog Carousel Script
+// ===============================
+let currentSlide = 0;
+let autoSlideInterval;
+
+function moveSlide(direction) {
+  const slidesContainer = document.querySelector(".slides");
+  const slides = document.querySelectorAll(".slide");
+  if (!slidesContainer || slides.length === 0) return;
+
+  currentSlide = (currentSlide + direction + slides.length) % slides.length;
+  slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function startAutoSlide() {
+  autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+}
+
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".carousel-container");
+  if (!container) return;
+
+  // Start automatic sliding
+  startAutoSlide();
+
+  // Pause on hover
+  container.addEventListener("mouseenter", stopAutoSlide);
+  container.addEventListener("mouseleave", startAutoSlide);
+});
+
+
