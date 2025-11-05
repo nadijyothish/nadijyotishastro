@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Auto-slide every 5 seconds
     function autoSlide() {
       moveSlide(1);
-      setTimeout(autoSlide, 5000);
+      setTimeout(autoSlide, 10000);
     }
 
     autoSlide();
@@ -114,3 +114,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
