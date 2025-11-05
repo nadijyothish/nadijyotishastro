@@ -82,37 +82,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
 // ===============================
-// Blog Carousel Script
+// Blog Carousel Script (Isolated)
 // ===============================
-let currentSlide = 0;
-let autoSlideInterval;
-
-function moveSlide(direction) {
-  const slides = document.querySelector(".slides");
-  const totalSlides = document.querySelectorAll(".slide").length;
-
-  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-
-function startAutoSlide() {
-  autoSlideInterval = setInterval(() => {
-    moveSlide(1);
-  }, 5000); // change slide every 5 seconds
-}
-
-function stopAutoSlide() {
-  clearInterval(autoSlideInterval);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  const slidesContainer = document.querySelector(".carousel-container");
-  if (!slidesContainer) return;
+  const carousel = document.querySelector(".blog-carousel .carousel-container");
+  if (!carousel) return;
 
-  // Start automatic carousel
+  const slidesContainer = carousel.querySelector(".slides");
+  const slides = carousel.querySelectorAll(".slide");
+  const prevBtn = carousel.querySelector(".blog-prev");
+  const nextBtn = carousel.querySelector(".blog-next");
+
+  let currentSlide = 0;
+  let autoSlideInterval;
+
+  const moveSlide = (direction) => {
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+  };
+
+  const startAutoSlide = () => {
+    autoSlideInterval = setInterval(() => moveSlide(1), 5000);
+  };
+
+  const stopAutoSlide = () => {
+    clearInterval(autoSlideInterval);
+  };
+
+  // Event Listeners
+  prevBtn.addEventListener("click", () => moveSlide(-1));
+  nextBtn.addEventListener("click", () => moveSlide(1));
+
+  carousel.addEventListener("mouseenter", stopAutoSlide);
+  carousel.addEventListener("mouseleave", startAutoSlide);
+
+  // Start automatic slide
   startAutoSlide();
+});
 
   // Pause on hover for better UX
   slidesContainer.addEventListener("mouseenter", stopAutoSlide);
@@ -158,5 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
   container.addEventListener("mouseenter", stopAutoSlide);
   container.addEventListener("mouseleave", startAutoSlide);
 });
+
 
 
