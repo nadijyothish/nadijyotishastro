@@ -1509,18 +1509,18 @@ h5 {
   border-radius: 16px;
 }
 
-/* Slides wrapper */
+/* Slides wrapper (important fix here 👇) */
 .slides {
   display: flex;
+  flex-wrap: nowrap;
   transition: transform 0.8s ease-in-out;
+  width: 100%;
 }
 
-/* Individual slide */
+/* Individual slide (each one takes 100%) */
 .slide {
-  min-width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 100%;
+  box-sizing: border-box;
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
@@ -1536,6 +1536,7 @@ h5 {
 
 .slide-text {
   padding: 25px;
+  text-align: left;
 }
 
 .slide-text h3 {
@@ -1565,7 +1566,7 @@ h5 {
   background: #a0522d;
 }
 
-/* Navigation buttons */
+/* Navigation arrows */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -1594,7 +1595,7 @@ h5 {
   right: 15px;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .slide img {
     height: 250px;
@@ -1608,4 +1609,3 @@ h5 {
     font-size: 15px;
   }
 }
-
