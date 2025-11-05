@@ -89,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function moveSlide(step) {
       index = (index + step + total) % total;
+      slides.style.transition = 'transform 0.5s ease';
+  slides.style.transform = `translateX(-${index * 100}%)`;
       updateSlide();
     }
 
@@ -114,4 +116,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
 
