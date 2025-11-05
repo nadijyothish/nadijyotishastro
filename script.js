@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
   // ---- Mobile menu ----
   const menuToggle = document.getElementById('mobile-menu');
@@ -69,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(step);
   };
 
-  // ---- Trigger Counter When Visible ----
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -77,8 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.2 });
 
   counters.forEach(counter => observer.observe(counter));
 });
-
