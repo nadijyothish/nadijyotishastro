@@ -1,4 +1,4 @@
-You said:
+
 document.addEventListener('DOMContentLoaded', function () {
   // ---- Mobile menu ----
   const menuToggle = document.getElementById('mobile-menu');
@@ -81,3 +81,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   counters.forEach(counter => observer.observe(counter));
 });
+
