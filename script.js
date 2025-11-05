@@ -1,5 +1,5 @@
+You said:
 document.addEventListener('DOMContentLoaded', function () {
-
   // ---- Mobile menu ----
   const menuToggle = document.getElementById('mobile-menu');
   const navMenu = document.querySelector('.nav-menu');
@@ -80,5 +80,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.5 });
 
   counters.forEach(counter => observer.observe(counter));
-
- 
+});
