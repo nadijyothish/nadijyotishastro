@@ -1517,6 +1517,14 @@ h5 {
   width: 100%;
 }
 
+.blog-carousel .slide img {
+  width: 100%;
+  height: 600px;          /* Adjust to match your preferred height */
+  object-fit: cover;      /* 🔥 This keeps image proportions and fills container */
+  display: block;
+  border-radius: 16px;
+}
+
 /* Individual slide (each one takes 100%) */
 .slide {
   flex: 0 0 100%;
@@ -1609,4 +1617,5 @@ h5 {
     font-size: 15px;
   }
 }
+
 
