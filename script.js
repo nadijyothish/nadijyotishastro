@@ -79,3 +79,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   counters.forEach(counter => observer.observe(counter));
 });
+
+
+
+
+// ===============================
+// Blog Carousel Script
+// ===============================
+let currentSlide = 0;
+let autoSlideInterval;
+
+function moveSlide(direction) {
+  const slides = document.querySelector(".slides");
+  const totalSlides = document.querySelectorAll(".slide").length;
+
+  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function startAutoSlide() {
+  autoSlideInterval = setInterval(() => {
+    moveSlide(1);
+  }, 5000); // change slide every 5 seconds
+}
+
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slidesContainer = document.querySelector(".carousel-container");
+  if (!slidesContainer) return;
+
+  // Start automatic carousel
+  startAutoSlide();
+
+  // Pause on hover for better UX
+  slidesContainer.addEventListener("mouseenter", stopAutoSlide);
+  slidesContainer.addEventListener("mouseleave", startAutoSlide);
+});
+
