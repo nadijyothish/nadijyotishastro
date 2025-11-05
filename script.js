@@ -82,39 +82,18 @@ document.addEventListener('DOMContentLoaded', function () {
   counters.forEach(counter => observer.observe(counter));
 
   // ---- Image Slider ----
-  const slides = document.querySelector('.slides');
-  if (slides) {
-    let index = 0;
-    const total = slides.children.length;
+ let index = 0;
+const slides = document.querySelector('.slides');
+const total = slides.children.length;
 
-    function moveSlide(step) {
-      index = (index + step + total) % total;
-      slides.style.transition = 'transform 0.5s ease';
+function moveSlide(step) {
+  index = (index + step + total) % total;
+  updateSlide();
+}
+
+function updateSlide() {
   slides.style.transform = `translateX(-${index * 100}%)`;
-      updateSlide();
-    }
+}
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    // Auto-slide every 5 seconds
-    function autoSlide() {
-      moveSlide(1);
-      setTimeout(autoSlide, 10000);
-    }
-
-    autoSlide();
-
-    // Attach manual navigation buttons (if they exist)
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener('click', () => moveSlide(-1));
-      nextBtn.addEventListener('click', () => moveSlide(1));
-    }
-  }
-});
-
-
+// Auto move every 5 seconds
+setInterval(() => moveSlide(1), 5000);
