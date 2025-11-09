@@ -54,7 +54,13 @@
 <meta property="og:image:height" content="512">
 <meta name="twitter:image" content="https://nadijyotishastro.com/favicon.webp">
 
+ <!-- Preconnects for faster DNS + TLS -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <!-- Preload Critical Assets -->
+  <link rel="preload" as="style" href="/styles.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/styles.css">
@@ -536,6 +542,7 @@
   </style>
 </body>
 </html>
+
 
 
 
