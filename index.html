@@ -62,11 +62,14 @@
   <link rel="preload" as="style" href="/styles.css">
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/styles.css">
+ <!-- Fallbacks for no-JS browsers -->
+  <noscript>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </noscript>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Preload Hero Image for LCP (Improves Largest Contentful Paint) -->
+  <link rel="preload" href="/images/64fc2d12-820c-4a6d-923c-6c128695948a.webp" as="image" fetchpriority="high">
   
   <!-- JavaScript -->
   <script src="/script.js" defer></script>
@@ -542,6 +545,7 @@
   </style>
 </body>
 </html>
+
 
 
 
