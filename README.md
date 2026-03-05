@@ -1,1 +1,0 @@
-# Nadi-Jyotish-Astro-one
